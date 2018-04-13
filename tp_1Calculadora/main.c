@@ -6,29 +6,57 @@
 
 int main()
 {
-
     float numeroA;
     float numeroB;
-    char operacion;
     float resultado;
+    char seguir='s';
+    int opcion=0;
 
-    printf("Ingrese un numero para operar: \n");
-    scanf("%f", &numeroA);
-    printf("Ingrese la operacion que desea realizar: \n");
-    operacion= getche();
-    printf("Ingrese siguiente numero para completar la operacion \n");
-    scanf("%f", &numeroB);
-
-    switch(operacion)
+    while(seguir=='s')
     {
-    case '+':
-        resultado= sumar(numeroA, numeroB);
-        break;
+        numeroA=
+        numeroB=
+        printf("\nCALCULADORA>>> Seleccione una opcion: \n\n");
+        printf("1- Ingresar 1er operando(A=%.2f)\n"), numeroA);
+        printf("2- Ingresar 2do operando (B=%.2f)\n"), numeroB);
+        printf("3- Calcular la suma (A+B)\n");
+        printf("4- Calcular la resta (A-B)\n");
+        printf("5- Calcular la division (A/B)\n");
+        printf("6- Calcular la multiplicacion (A*B)\n");
+        printf("7- Calcular el factorial (A!)\n");
+        printf("8- Calcular todas las operaciones\n");
+        printf("9- Salir\n");
 
+        scanf("%d",&opcion);
+
+        switch(opcion)
+        {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                resultado= sumar(numeroA, numeroB);
+
+                printf("\nEl resultado de la suma es = %.2f \n", resultado);
+
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                seguir = 'n';
+                break;
+        }
     }
 
-
-    printf("el resultado es = %.2f \n", resultado);
 
 
     return 0;

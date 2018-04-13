@@ -12,5 +12,20 @@ float sumar(float numeroA, float numeroB)
 
 
     return resultado;
+
 }
+
+
+float escanearNumero( )
+{
+    float numero;
+
+    printf("Ingrese un operando: \n");
+    scanf("%f", &numero);
+
+    return numero;
+
+}
+
+float mostrarNumero
 

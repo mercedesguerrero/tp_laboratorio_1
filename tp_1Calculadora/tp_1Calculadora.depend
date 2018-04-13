@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1523498056 source:c:\users\mechu\desktop\tp_laboratorio_1\tp_1calculadora\calculadora.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	"Calculadora.h"
+
+1523497537 c:\users\mechu\desktop\tp_laboratorio_1\tp_1calculadora\calculadora.h
+
+1523499143 source:c:\users\mechu\desktop\tp_laboratorio_1\tp_1calculadora\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	"Calculadora.h"
+
