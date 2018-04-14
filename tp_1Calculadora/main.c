@@ -8,25 +8,15 @@ int main()
 {
     float numeroA;
     float numeroB;
+    int AestaCargado;
+    int BestaCargado;
     float resultado;
     char seguir='s';
     int opcion=0;
 
-    while(seguir=='s')
+    do
     {
-        numeroA=
-        numeroB=
-        printf("\nCALCULADORA>>> Seleccione una opcion: \n\n");
-        printf("1- Ingresar 1er operando(A=%.2f)\n"), numeroA);
-        printf("2- Ingresar 2do operando (B=%.2f)\n"), numeroB);
-        printf("3- Calcular la suma (A+B)\n");
-        printf("4- Calcular la resta (A-B)\n");
-        printf("5- Calcular la division (A/B)\n");
-        printf("6- Calcular la multiplicacion (A*B)\n");
-        printf("7- Calcular el factorial (A!)\n");
-        printf("8- Calcular todas las operaciones\n");
-        printf("9- Salir\n");
-
+        mostrarMenu(numeroA, numeroB, AestaCargado, BestaCargado);
         scanf("%d",&opcion);
 
         switch(opcion)
@@ -56,6 +46,15 @@ int main()
                 break;
         }
     }
+
+
+    while(seguir=='s')
+    {
+
+    }
+
+
+
 
 
 
