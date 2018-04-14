@@ -40,11 +40,17 @@ void mostrarMenu(float numeroA, float numeroB, int AestaCargado, int BestaCargad
 float escanearNumero()
 {
     float numero;
-    printf("Ingrese un numero: ");
+    printf("\nIngrese un numero: ");
     scanf("%f", &numero);
 
     return numero;
 
+}
+
+void presionarContinuar()
+{
+    printf("\nPresione cualquier tecla para continuar ");
+    getch();
 }
 
 

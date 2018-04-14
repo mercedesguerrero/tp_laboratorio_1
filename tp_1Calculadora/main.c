@@ -40,14 +40,38 @@ int main()
 
                 printf("\nEl resultado de la suma es = %.2f \n", resultado);
 
+                presionarContinuar();
+
                 break;
             case 4:
+                resultado= restar(numeroA, numeroB);
+
+                printf("\nEl resultado de la resta es = %.2f \n", resultado);
+
+                presionarContinuar();
+
                 break;
             case 5:
+                resultado= dividir(numeroA, numeroB);
+
+                printf("\nEl resultado de la division es = %.2f \n", resultado);
+
+                presionarContinuar();
+
                 break;
             case 6:
+                resultado= multiplicar(numeroA, numeroB);
+
+                printf("\nEl resultado de la multiplicacion es = %.2f \n", resultado);
+
+                presionarContinuar();
                 break;
             case 7:
+                resultado= factorial(numeroA);
+
+                printf("\nEl factorial del número ingresado es = %.2d\n", factorial);
+
+                presionarContinuar();
                 break;
             case 8:
                 break;
