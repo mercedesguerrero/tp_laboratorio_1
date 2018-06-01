@@ -12,20 +12,17 @@ typedef struct{
     char descripcion[50];
     int puntaje;
     char linkImagen[50];
-    int estado;
 }eMovie;
 
 void mostrarMenu();
-void presionarContinuar();
-
-int eMovie_init(eMovie[],int limite);
+void pressContinue();
 
 int getInt();
 char getChar();
 void getString(char mensaje[],char input[]);
 
-void loadData(typedef struct eMovie* p);
-int saveMovie(typedef struct eMovie* p);
+void loadData(eMovie*);
+int saveMovie(eMovie*);
 
 /**
  *  Agrega una pelicula al archivo binario

@@ -3,63 +3,56 @@
 #include <string.h>
 #include "Funciones.h"
 
-#define SIZE_MOVIE 50
-
-
 int main()
 {
-    typedef struct eMovie p;
+    eMovie* p;
 
-    char seguir='s';
-    int opcion=0;
-
-
-    eMovie listMovies[SIZE_MOVIE];
-
+    int opcion= 0;
+    char seguir= 's';
+    char cargar= 's';
 
     do
     {
         mostrarMenu();
-        opcion= getChar("\nLa opcion es: ");
+        opcion= getInt("\nLa opcion es: ");
 
         switch(opcion)
         {
             case 1:
-                //eMovie_alta(listMovies, SIZE_MOVIE);
                 do
                 {
+                    system("cls");
+
                     loadData(&p);
                     saveMovie(&p);
-                    seguir= getChar("Desea ingresar otra pelicula? s/n:");
-                }while(seguir=='s');
 
-                presionarContinuar();
+                    cargar= getChar("\nDesea ingresar otra pelicula? s/n: ");
+                }while(cargar=='s');
+
                 break;
             case 2:
                 //mostrarlistMovies(listMovies, SIZE_MOVIE);
 
                 //eMovie_baja(listMovies, SIZE_MOVIE, eMovie_buscarPorId(listMovies, SIZE_MOVIE, pedirNumEntero("\nIngrese ID a dar de baja: ")));
 
-                presionarContinuar();
+                pressContinue("\nPresione cualquier tecla para continuar ");
                 break;
             case 3:
                 //mostrarlistMovies(listMovies, SIZE_MOVIE);
 
                 //eMovie_modificacion(listMovies, SIZE_MOVIE, eMovie_buscarPorId(listMovies, SIZE_MOVIE, pedirNumEntero("\nIngrese ID a modificar: ")));
 
-                presionarContinuar();
+                pressContinue("\nPresione cualquier tecla para continuar ");
                 break;
             case 4:
                 //GENERAR PÁGINA WEB
-                presionarContinuar();
+                pressContinue("\nPresione cualquier tecla para continuar ");
                 break;
             case 5:
-                seguir = 'n';
+                seguir= 'n';
                 break;
         }
-    }while(seguir=='s');
-
-    presionarContinuar();
+    }while(seguir== 's');
 
     return 0;
 }

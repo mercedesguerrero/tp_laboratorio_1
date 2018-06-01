@@ -16,32 +16,12 @@ void mostrarMenu()
     printf("\n3- Modificar Pelicula\n");
     printf("\n4- Generar Pagina Web\n");
     printf("\n5- Salir\n");
-
 }
 
-void presionarContinuar()
+void pressContinue(char* mensaje)
 {
-    printf("\nPresione cualquier tecla para continuar ");
+    printf("%s", mensaje);
     getch();
-}
-
-/**< INICIALIZA ESTADO EN LIBRE*/
-int eMovie_init (eMovie movies[],int limite)
-{
-    int retorno = -1;
-    int i;
-
-    if(limite > 0 && movies != NULL)
-    {
-        retorno = 0;
-        for(i=0; i<limite; i++)
-        {
-            movies[i].estado= LIBRE;
-
-            //movies[i].idMovie= 0;
-        }
-    }
-    return retorno;
 }
 
 int getInt(char* mensaje)
@@ -49,6 +29,7 @@ int getInt(char* mensaje)
     int auxiliar;
     printf("%s",mensaje);
     scanf("%d",&auxiliar);
+
     return auxiliar;
 }
 
@@ -67,24 +48,27 @@ void getString(char mensaje[],char input[])
     scanf ("%s", input);
 }
 
-void loadData(typedef struct eMovie* p)
+void loadData(eMovie* p)
 {
     getString("\nIngrese genero: ",p->genero);
-    p->duracion=getInt("\nIngrese duracion: ");
-    getString("\nIngrese descripcion:",p->descripcion);
-    p->duracion=getInt("\nIngrese puntaje: ");
+    fflush(stdin);
+    p->duracion=getInt("\nIngrese duracion en minutos: ");
+    getString("\nIngrese descripcion: ",p->descripcion);
+    fflush(stdin);
+    p->puntaje=getInt("\nIngrese puntaje: ");
 }
 
-int saveMovie(typedef struct eMovie* p)
+int saveMovie(eMovie* p)
 {
     FILE* fp;
     fp=fopen("movies.dat","ab+"); // append binario, lo crea si no existe
+
     if(fp==NULL)
     {
         printf("Error opening file");
         return -1;
     }
-    fwrite(p,sizeof(typedef struct eMovie),1,fp); // escribo una struct al final
+    fwrite(p,sizeof(eMovie),1,fp); // escribo una struct al final
 
     fclose(fp);
 
