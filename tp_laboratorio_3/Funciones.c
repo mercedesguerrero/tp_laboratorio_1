@@ -33,6 +33,27 @@ int getInt(char* mensaje)
     return auxiliar;
 }
 
+int getIntRango(char* mensaje, int desde, int hasta)
+{
+    int auxiliar;
+    int flag= 0;
+
+    do
+    {
+        if(flag==1)
+        {
+            printf("\n Debe ser de: %d a %d\n", desde, hasta);
+        }
+        fflush(stdin);
+        printf("%s",mensaje);
+        scanf("%d",&auxiliar);
+        flag=1;
+
+    }while( (auxiliar<desde) || (auxiliar>hasta) );
+
+    return auxiliar;
+}
+
 char getChar(char* mensaje)
 {
     char auxiliar;
@@ -50,12 +71,16 @@ void getString(char mensaje[],char input[])
 
 void loadData(eMovie* p)
 {
+    getString("\nIngrese titulo: ",p->titulo);
+    fflush(stdin);
     getString("\nIngrese genero: ",p->genero);
     fflush(stdin);
     p->duracion=getInt("\nIngrese duracion en minutos: ");
     getString("\nIngrese descripcion: ",p->descripcion);
     fflush(stdin);
-    p->puntaje=getInt("\nIngrese puntaje: ");
+    p->puntaje=getIntRango("\nIngrese puntaje: ", 1, 10);
+    getString("\nLink a imagen: ",p->linkImagen);
+    fflush(stdin);
 }
 
 int saveMovie(eMovie* p)

@@ -9,7 +9,7 @@ typedef struct{
     char titulo[20];
     char genero[20];
     int duracion;
-    char descripcion[50];
+    char descripcion[700];
     int puntaje;
     char linkImagen[50];
 }eMovie;
@@ -18,6 +18,7 @@ void mostrarMenu();
 void pressContinue();
 
 int getInt();
+int getIntRango(char* mensaje, int desde, int hasta);
 char getChar();
 void getString(char mensaje[],char input[]);
 
@@ -26,14 +27,14 @@ int saveMovie(eMovie*);
 
 /**
  *  Agrega una pelicula al archivo binario
- *  @param movie la estructura a ser agregada al archivo
+ *  @param eMovie la estructura a ser agregada al archivo
  *  @return retorna 1 o 0 de acuerdo a si pudo agregar la pelicula o no
  */
 int agregarPelicula(eMovie movies);
 
 /**
  *  Borra una pelicula del archivo binario
- *  @param movie la estructura a ser eliminada al archivo
+ *  @param eMovie la estructura a ser eliminada del archivo
  *  @return retorna 1 o 0 de acuerdo a si pudo eliminar la pelicula o no
  */
 int borrarPelicula(eMovie movies);

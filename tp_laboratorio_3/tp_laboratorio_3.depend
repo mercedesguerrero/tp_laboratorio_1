@@ -1,14 +1,14 @@
 # depslib dependency file v1.0
-1527826460 source:c:\users\mechu\desktop\tp_laboratorio_1\tp_laboratorio_3\funciones.c
+1527829610 source:c:\users\mechu\desktop\tp_laboratorio_1\tp_laboratorio_3\funciones.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<conio.h>
 	"Funciones.h"
 
-1527825886 c:\users\mechu\desktop\tp_laboratorio_1\tp_laboratorio_3\funciones.h
+1527830115 c:\users\mechu\desktop\tp_laboratorio_1\tp_laboratorio_3\funciones.h
 
-1527826460 source:c:\users\mechu\desktop\tp_laboratorio_1\tp_laboratorio_3\main.c
+1527827325 source:c:\users\mechu\desktop\tp_laboratorio_1\tp_laboratorio_3\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
