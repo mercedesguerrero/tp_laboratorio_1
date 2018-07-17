@@ -63,7 +63,7 @@ char getChar(char* mensaje)
     return auxiliar;
 }
 
-void getString(char mensaje[],char input[])
+void getString(char mensaje[], char input[])
 {
     printf("%s",mensaje);
     scanf ("%s", input);
@@ -86,18 +86,25 @@ void loadData(eMovie* p)
 int saveMovie(eMovie* p)
 {
     FILE* fp;
+
+    int retorno= -1;
+
     fp=fopen("movies.dat","ab+"); // append binario, lo crea si no existe
 
+    if(fp!=NULL)
+    {
+        fwrite(p,sizeof(eMovie),1,fp); // escribo una struct al final
+        retorno=0;
+    }
     if(fp==NULL)
     {
         printf("Error opening file");
-        return -1;
+        retorno= -1;
     }
-    fwrite(p,sizeof(eMovie),1,fp); // escribo una struct al final
 
     fclose(fp);
 
-    return 0;
+    return retorno;
 }
 
 

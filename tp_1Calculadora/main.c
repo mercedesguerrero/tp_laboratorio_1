@@ -4,9 +4,6 @@
 #include "Calculadora.h"
 #include "Consola.h"
 
-void mostrarMenu(float numeroA, float numeroB, int AestaCargado, int BestaCargado);
-float escanearNumero();
-
 int main()
 {
     float numeroA;
@@ -14,7 +11,8 @@ int main()
     int AestaCargado=0;
     int BestaCargado=0;
 
-    float resultado;
+    int resultadoInt=0;
+    float resultado=0;
     char seguir='s';
     int opcion=0;
 
@@ -36,44 +34,127 @@ int main()
                 BestaCargado=1;
                 break;
             case 3:
-                resultado= sumar(numeroA, numeroB);
+                if(AestaCargado==1 && BestaCargado==1)
+                {
+                    resultado= sumar(numeroA, numeroB);
 
-                printf("\nEl resultado de la suma es = %.2f \n", resultado);
+                    printf("\n> El resultado de la suma es %.2f + %.2f = %.2f \n\n", numeroA, numeroB, resultado);
+                }
+                else
+                {
+                    printf("\n> Debe ingresar dos operandos para realizar esta operacion\n");
+                }
 
                 presionarContinuar();
 
                 break;
             case 4:
-                resultado= restar(numeroA, numeroB);
+                if(AestaCargado==1 && BestaCargado==1)
+                {
+                    resultado= restar(numeroA, numeroB);
 
-                printf("\nEl resultado de la resta es = %.2f \n", resultado);
+                    printf("\n> El resultado de la resta es %.2f - %.2f = %.2f \n\n", numeroA, numeroB, resultado);
+                }
+                else
+                {
+                    printf("\n> Debe ingresar dos operandos para realizar esta operacion\n");
+                }
 
                 presionarContinuar();
 
                 break;
             case 5:
-                resultado= dividir(numeroA, numeroB);
+                if(AestaCargado==1 && BestaCargado==1)
+                {
+                    if(numeroB==0)
+                    {
+                        printf("\n> Error! Numero invalido para realizar esta operacion\n");
+                    }
+                    else
+                    {
+                        resultado= dividir(numeroA, numeroB);
 
-                printf("\nEl resultado de la division es = %.2f \n", resultado);
+                        printf("\n> El resultado de la division es %.2f / %.2f = %.2f \n\n", numeroA, numeroB, resultado);
+                    }
+                }
+                else
+                {
+                    printf("\n> Debe ingresar dos operandos para realizar esta operacion\n");
+                }
 
                 presionarContinuar();
 
                 break;
             case 6:
-                resultado= multiplicar(numeroA, numeroB);
+                if(AestaCargado==1 && BestaCargado==1)
+                {
+                    resultado= multiplicar(numeroA, numeroB);
 
-                printf("\nEl resultado de la multiplicacion es = %.2f \n", resultado);
+                    printf("\n> El resultado de la multiplicacion es %.2f x %.2f = %.2f \n\n", numeroA, numeroB, resultado);
+                }
+                else
+                {
+                    printf("\n> Debe ingresar dos operandos para realizar esta operacion\n");
+                }
 
                 presionarContinuar();
                 break;
             case 7:
-                resultado= factorial(numeroA);
+                if(AestaCargado==1)
+                {
+                    resultadoInt= factorial(numeroA);
+                    if(resultadoInt<0)
+                    {
+                        printf("\n> Reingrese el primer operando\n");
+                    }
+                    else
+                    {
+                        printf("\n> El factorial de %.0f! es = %d\n\n", numeroA, resultadoInt);
+                    }
+                }
+                else
+                {
+                    printf("\n> Debe seleccionar la opcion 1 e ingresar un numero\n");
+                }
 
-                printf("\nEl factorial del número ingresado es = %.2d\n", factorial);
 
                 presionarContinuar();
                 break;
             case 8:
+                system("cls");
+
+                if(AestaCargado==1 && BestaCargado==1)
+                {
+                    printf("\n> El resultado de la suma es %.2f + %.2f = %.2f \n", numeroA, numeroB, sumar(numeroA, numeroB));
+                    printf("\n> El resultado de la resta es %.2f - %.2f = %.2f \n", numeroA, numeroB, restar(numeroA, numeroB));
+                    if(numeroB==0)
+                    {
+                        printf("\n> Error! Numero invalido para realizar la operacion division\n");
+                    }
+                    else
+                    {
+                        resultado= dividir(numeroA, numeroB);
+
+                        printf("\n> El resultado de la division es %.2f / %.2f = %.2f \n\n", numeroA, numeroB, resultado);
+                    }
+                    printf("\n> El resultado de la multiplicacion es %.2f x %.2f = %.2f \n", numeroA, numeroB, multiplicar(numeroA, numeroB));
+
+                    resultadoInt= factorial(numeroA);
+                    if(resultadoInt<0)
+                    {
+                        printf("\n> Reingrese el primer operando\n");
+                    }
+                    else
+                    {
+                        printf("\n> El factorial de %.0f! es = %d\n\n", numeroA, resultadoInt);
+                    }
+                }
+                else
+                {
+                    printf("> Debe ingresar dos numeros para poder realizar las operaciones\n");
+                }
+
+                presionarContinuar();
                 break;
             case 9:
                 seguir = 'n';

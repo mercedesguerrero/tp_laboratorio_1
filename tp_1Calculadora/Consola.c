@@ -3,6 +3,13 @@
 #include<conio.h>
 #include "Consola.h"
 
+/** \brief Imprime menú de opciones en pantalla
+ * \param float Primer operando
+ * \param float Segundo operando
+ * \param int Flag informa si ya se ingresó el primer operando
+ * \param int Flag informa si ya se ingresó el segundo operando
+ */
+
 void mostrarMenu(float numeroA, float numeroB, int AestaCargado, int BestaCargado)
 {
     system("cls");
@@ -37,6 +44,17 @@ void mostrarMenu(float numeroA, float numeroB, int AestaCargado, int BestaCargad
     printf("\nLa opcion es: ");
 }
 
+/** \brief Imprime mensaje Presione cualquier tecla
+ */
+void presionarContinuar()
+{
+    printf("\nPresione cualquier tecla para continuar ");
+    getch();
+}
+
+/** \brief Pide un número y lo guarda
+ * \return float El número ingresado
+ */
 float escanearNumero()
 {
     float numero;
@@ -47,11 +65,7 @@ float escanearNumero()
 
 }
 
-void presionarContinuar()
-{
-    printf("\nPresione cualquier tecla para continuar ");
-    getch();
-}
+
 
 
 
