@@ -10,8 +10,8 @@
 int main()
 {
     /**< Array lista de personas */
-    EPersona listaDePersonas[TAMPERSONA];
-
+    ePersona listaDePersonas[TAMPERSONA];
+    /**< Inicializo la lista */
     inicializarPersonasEstado(listaDePersonas, TAMPERSONA);
     inicializarPersonasHardCode(listaDePersonas);
 

@@ -25,7 +25,7 @@ void presionarContinuar()
 }
 
 
-void inicializarPersonasEstado(EPersona personas[], int limite)
+void inicializarPersonasEstado(ePersona personas[], int limite)
 {
     int i;
 
@@ -35,9 +35,9 @@ void inicializarPersonasEstado(EPersona personas[], int limite)
     }
 }
 
-void inicializarPersonasHardCode(EPersona personas[])
+void inicializarPersonasHardCode(ePersona personas[])
 {
-    char nombre[15][40]= {"Cecilia","Mara","Marcelo","Vanesa","Juan","Laura","Luis","Micaela","Guillermo","Pedro","Stella","Antonela","Gabriela","Carlos","Bruno"};
+    char nombre[15][30]= {"Cecilia","Mara","Marcelo","Vanesa","Juan","Laura","Luis","Micaela","Guillermo","Pedro","Stella","Antonela","Gabriela","Carlos","Bruno"};
     int edad[15]= {20,16,21,14,34,46,33,64,15,36,17,13,42,15,71};
     long int dni[15]= {42153281,45783294,39492384,23864398,34152378,52152237,23872235,39271452,24847392,56783256,34567238,41296374,60221378,33678219,63245632};
 
@@ -52,7 +52,7 @@ void inicializarPersonasHardCode(EPersona personas[])
     }
 }
 
-int obtenerEspacioLibre(EPersona personas[], int limite)
+int obtenerEspacioLibre(ePersona personas[], int limite)
 {
     int retorno = -2;
     int i;
@@ -124,7 +124,7 @@ int pedirNumEnteroLong(char mensaje[])
 }
 
 
-int altaDePersona(EPersona personas[],int limite)
+int altaDePersona(ePersona personas[],int limite)
 {
     int retorno=-1;
     int index;
@@ -157,7 +157,7 @@ int altaDePersona(EPersona personas[],int limite)
     return retorno;
 }
 
-int mostrarListadoDePersonas(EPersona personas[], int limite)
+int mostrarListadoDePersonas(ePersona personas[], int limite)
 {
     int i;
     int retorno=-2;
@@ -177,7 +177,7 @@ int mostrarListadoDePersonas(EPersona personas[], int limite)
     return retorno;
 }
 
-int borrarUnaPersona(EPersona personas[], int limite)
+int borrarUnaPersona(ePersona personas[], int limite)
 {
     int i;
     long int DniABuscar;
