@@ -20,6 +20,7 @@ void inicializarPersonasHardCode(ePersona[]);
 void mostrarMenu();
 void presionarContinuar();
 
+void ordenarListadoDePersonas(ePersona personas[], int limite);
 int mostrarListadoDePersonas(ePersona[], int limite);
 
 /**
@@ -32,7 +33,8 @@ int obtenerEspacioLibre(ePersona listaDePersonas[], int limite);
 int altaDePersona(ePersona[], int cantidad);
 
 void getString(char mensaje[], char input[]);
-void getValidString(char mensaje[], char error[], char input[], int limite);
+int esSoloLetras(char str[]);
+int getValidString(char mensaje[], char error[], char input[], int limite);
 int pedirNumEntero(char mensaje[]);
 int pedirNumEnteroLong(char mensaje[]);
 

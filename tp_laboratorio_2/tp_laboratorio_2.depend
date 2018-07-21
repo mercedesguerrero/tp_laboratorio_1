@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1531791709 source:c:\users\mechu\desktop\tp_laboratorio_1\tp_laboratorio_2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+
+1532208862 c:\users\mechu\desktop\tp_laboratorio_1\tp_laboratorio_2\funciones.h
+
+1532212480 source:c:\users\mechu\desktop\tp_laboratorio_1\tp_laboratorio_2\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+

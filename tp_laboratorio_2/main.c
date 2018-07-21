@@ -34,6 +34,7 @@ int main()
                 presionarContinuar();
                 break;
             case 3:
+                ordenarListadoDePersonas(listaDePersonas, TAMPERSONA);
                 mostrarListadoDePersonas(listaDePersonas, TAMPERSONA);
                 presionarContinuar();
                 break;

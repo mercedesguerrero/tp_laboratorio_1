@@ -37,7 +37,7 @@ void inicializarPersonasEstado(ePersona personas[], int limite)
 
 void inicializarPersonasHardCode(ePersona personas[])
 {
-    char nombre[15][30]= {"Cecilia","Mara","Marcelo","Vanesa","Juan","Laura","Luis","Micaela","Guillermo","Pedro","Stella","Antonela","Gabriela","Carlos","Bruno"};
+    char nombre[15][20]= {"Cecilia","Mara","Marcelo","Vanesa","Juan","Laura","Luis","Micaela","Guillermo","Pedro","Stella","Antonela","Gabriela","Carlos","Bruno"};
     int edad[15]= {20,16,21,14,34,46,33,64,15,36,17,13,42,15,71};
     long int dni[15]= {42153281,45783294,39492384,23864398,34152378,52152237,23872235,39271452,24847392,56783256,34567238,41296374,60221378,33678219,63245632};
 
@@ -84,23 +84,43 @@ void getString(char mensaje[], char input[])
     fflush(stdin);
 }
 
-void getValidString(char mensaje[], char error[], char input[], int limite)
+int esSoloLetras(char str[])
+{
+   int i=0;
+   int retorno=1;
+   while(str[i] != '\0')
+   {
+       if((str[i] != ' ') && (str[i] < 'a' || str[i] > 'z') && (str[i] < 'A' || str[i] > 'Z'))
+           retorno=0;
+       i++;
+   }
+   return retorno;
+}
+
+int getValidString(char mensaje[], char error[], char input[], int limite)
 {
     int j;
+    char auxString[limite+100]; //por si se pasa
+    int retorno=0;
 
     do
     {
+        fflush(stdin);
         getString(mensaje, input);
-
         j= strlen(input);
 
-        if(j>= limite)
+        if(j>= limite || esSoloLetras(input)==0)
         {
             printf("%s", error);
         }
+        else
+        {
+            strcpy(auxString, input);
+            retorno=1;
+        }
+    }while(j>= limite || esSoloLetras(input)==0);
 
-    }while(j>= limite);
-
+    return retorno;
 }
 
 int pedirNumEntero(char mensaje[])
@@ -129,7 +149,7 @@ int altaDePersona(ePersona personas[],int limite)
     int retorno=-1;
     int index;
     long int dni;
-    char nombre[50];
+    char nombre[30];
     int edad;
 
     if(limite>0 && personas!= NULL)
@@ -139,7 +159,7 @@ int altaDePersona(ePersona personas[],int limite)
 
         if(index>= 0)//HAY LUGAR
         {
-            getValidString("Ingrese nombre: \n", "El nombre ingresado es muy largo, reingrese\n", nombre, 50);
+            getValidString("Ingrese nombre: \n", "Puede ingresar hasta 20 letras\n", nombre, 20);
             strcpy(personas[index].nombre, nombre);
             edad= pedirNumEntero("Ingrese edad: \n");
             personas[index].edad = edad;
@@ -157,23 +177,49 @@ int altaDePersona(ePersona personas[],int limite)
     return retorno;
 }
 
+void ordenarListadoDePersonas(ePersona personas[], int limite)
+{
+    ePersona auxiliar[limite];
+
+    for(int i=0; i<limite-1; i++)
+    {
+        for(int j=i+1; j<limite; j++)
+        {
+             if(personas[i].estado==OCUPADO)
+             {
+                 if((strcmp(personas[i].nombre,personas[j].nombre))> 0)
+                    {
+                         auxiliar[i]= personas[i];
+                         personas[i]=personas[j];
+                         personas[j]=auxiliar[i];
+                    }
+             }
+        }
+    }
+}
+
 int mostrarListadoDePersonas(ePersona personas[], int limite)
 {
     int i;
     int retorno=-2;
 
-    printf("%s\t\t %s\t\t %s\t\n","\nNombre","Edad", "DNI");
+    printf("\n");
+    printf(" -------------------------------------------------------\n");
+    printf("%s    \t\t %s \t %s\n","| Nombre","| Edad", "| DNI          |");
+    printf(" -------------------------------------------------------\n");
 
-/**< Recorre el listado y si el estado es distinto de OCUPADO lo muestra */
+/**< Recorre el listado y si el estado es igual a OCUPADO lo muestra */
     for(i=0; i<limite; i++)
     {
         retorno=-1;
+
         if(personas[i].estado==OCUPADO)
         {
             retorno=0;
-            printf("%s\t\t %d\t\t %ld\t\n", personas[i].nombre, personas[i].edad, personas[i].dni);
+            printf("| %s    \t\t | %d \t\t | %ld     |\n", personas[i].nombre, personas[i].edad, personas[i].dni);
         }
     }
+    printf(" -------------------------------------------------------\n");
     return retorno;
 }
 
@@ -186,23 +232,20 @@ int borrarUnaPersona(ePersona personas[], int limite)
     mostrarListadoDePersonas(personas, CANTIDAD);
 
     if(mostrarListadoDePersonas(personas, limite)==0)
-       {
-            //mostrarListadoDePersonas(personas, limite);
+    {
+        DniABuscar= pedirNumEnteroLong("\nIngrese el DNI de la persona que desea borrar: ");
+        retorno= -2;
 
-            printf("Ingrese DNI de la persona que desea borrar");
-            scanf("%dl", &DniABuscar);
-            retorno= -2;
-
-            for(i=0; i<limite; i++)
+        for(i=0; i<limite; i++)
+        {
+            retorno= -3;
+            if(personas[i].estado == OCUPADO && personas[i].dni == DniABuscar)
             {
-                retorno= -3;
-                if(personas[i].estado == OCUPADO && personas[i].dni == DniABuscar)
-                {
-                    personas[i].dni= 0;
-                    personas[i].estado== LIBRE;
-                }
+                personas[i].dni= 0;
+                personas[i].estado== LIBRE;
             }
-       }
+        }
+    }
 
     return retorno;
 }
