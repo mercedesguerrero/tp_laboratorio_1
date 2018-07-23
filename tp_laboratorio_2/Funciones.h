@@ -22,6 +22,7 @@ void presionarContinuar();
 
 void ordenarListadoDePersonas(ePersona personas[], int limite);
 int mostrarListadoDePersonas(ePersona[], int limite);
+void mostrarUnaPersona(ePersona personas[], int indice);
 
 /**
  * Obtiene el primer indice libre del array.
@@ -32,11 +33,12 @@ int obtenerEspacioLibre(ePersona listaDePersonas[], int limite);
 
 int altaDePersona(ePersona[], int cantidad);
 
+char getLetra(char mensaje[]);
 void getString(char mensaje[], char input[]);
 int esSoloLetras(char str[]);
 int getValidString(char mensaje[], char error[], char input[], int limite);
 int pedirNumEntero(char mensaje[]);
-int pedirNumEnteroLong(char mensaje[]);
+long int pedirNumEnteroLong(char mensaje[]);
 
 /**
  * Obtiene el indice que coincide con el dni pasado por parametro.
@@ -48,6 +50,8 @@ int buscarPorDni(ePersona listaDePersonas[], long int dni, int limite);
 
 
 int borrarUnaPersona(ePersona[], int limite);
+
+void graficoPersonas(ePersona personas[], int limite);
 
 
 #endif // FUNCIONES_H_INCLUDED

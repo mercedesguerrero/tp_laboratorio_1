@@ -133,16 +133,25 @@ int pedirNumEntero(char mensaje[])
     return numeroEntero;
 }
 
-int pedirNumEnteroLong(char mensaje[])
+long int pedirNumEnteroLong(char mensaje[])
 {
-    int numeroLong;
+    long int numeroLong;
 
     printf("%s", mensaje);
-    scanf("%dl", &numeroLong);
+    scanf("%ld", &numeroLong);
 
     return numeroLong;
 }
 
+char getLetra(char mensaje[])
+{
+    char auxiliar;
+
+    printf("%s", mensaje);
+    scanf("%c", &auxiliar);
+
+    return auxiliar;
+}
 
 int altaDePersona(ePersona personas[],int limite)
 {
@@ -198,10 +207,60 @@ void ordenarListadoDePersonas(ePersona personas[], int limite)
     }
 }
 
+void mostrarUnaPersona(ePersona personas[], int indice)
+{
+    printf(" -------------------------------------------------------\n");
+    printf("| %s    \t\t | %d \t\t | %ld     |\n", personas[indice].nombre, personas[indice].edad, personas[indice].dni);
+    printf(" -------------------------------------------------------\n");
+}
+
+int borrarUnaPersona(ePersona personas[], int limite)
+{
+    int i;
+    long int DniABuscar;
+    int retorno= -1;
+    char confirma;
+
+    if(mostrarListadoDePersonas(personas, limite)==0)
+    {
+        DniABuscar= pedirNumEnteroLong("\nIngrese el DNI de la persona que desea borrar: ");
+        retorno= -2;
+
+        for(i=0; i<limite; i++)
+        {
+            retorno= -3;
+            if(personas[i].estado == OCUPADO && personas[i].dni == DniABuscar)
+            {
+                fflush(stdin);
+                mostrarUnaPersona(personas, i);
+                confirma= getLetra("\nEsta seguro que desea borrar s/n?");
+
+                if(confirma=='s')
+                {
+                    personas[i].dni= 0;
+                    personas[i].estado=LIBRE;
+                    printf("\nSe borro la persona seleccionada\n");
+
+                    retorno=0;
+                }
+                else
+                {
+                    printf("\nCancelado\n");
+                    retorno=1;
+                }
+            }
+        }
+    }
+
+    return retorno;
+}
+
 int mostrarListadoDePersonas(ePersona personas[], int limite)
 {
     int i;
     int retorno=-2;
+
+    ordenarListadoDePersonas(personas, limite);
 
     printf("\n");
     printf(" -------------------------------------------------------\n");
@@ -215,39 +274,72 @@ int mostrarListadoDePersonas(ePersona personas[], int limite)
 
         if(personas[i].estado==OCUPADO)
         {
-            retorno=0;
             printf("| %s    \t\t | %d \t\t | %ld     |\n", personas[i].nombre, personas[i].edad, personas[i].dni);
+            retorno=0;
         }
     }
     printf(" -------------------------------------------------------\n");
     return retorno;
 }
 
-int borrarUnaPersona(ePersona personas[], int limite)
+void graficoPersonas(ePersona personas[], int limite)
 {
+    char columna1[limite][2];
+    char columna2[limite][2];
+    char columna3[limite][2];
     int i;
-    long int DniABuscar;
-    int retorno= -1;
+    int w=0;
+    int j=0;
+    int k=0;
 
-    mostrarListadoDePersonas(personas, CANTIDAD);
-
-    if(mostrarListadoDePersonas(personas, limite)==0)
+    for(i=0;i<=limite;i++)
     {
-        DniABuscar= pedirNumEnteroLong("\nIngrese el DNI de la persona que desea borrar: ");
-        retorno= -2;
+        strcpy(columna1[i]," ");
+        strcpy(columna2[i]," ");
+        strcpy(columna3[i]," ");
+    }
 
-        for(i=0; i<limite; i++)
+    for(i=0;i<limite;i++)
+    {
+        if(personas[i].estado==OCUPADO)
         {
-            retorno= -3;
-            if(personas[i].estado == OCUPADO && personas[i].dni == DniABuscar)
+            if(personas[i].edad <= 18 && personas[i].edad >0)
             {
-                personas[i].dni= 0;
-                personas[i].estado== LIBRE;
+                fflush(stdin);
+                strcpy(columna1[w], "*");
+                w++;
+            }
+
+            if(personas[i].edad > 18 && personas[i].edad <=35)
+            {
+                fflush(stdin);
+                strcpy(columna2[k], "*");
+                k++;
+            }
+
+            if(personas[i].edad > 35)
+            {
+                fflush(stdin);
+                strcpy(columna3[j], "*");
+                j++;
             }
         }
     }
+    printf("\n");
 
-    return retorno;
+    for(i=limite;i>=0;i--)
+    {
+        if( (strcmp(columna1[i],"*")==0) || (strcmp(columna2[i],"*")==0) || (strcmp(columna3[i],"*")==0)  )
+        {
+            printf("  %d-| %s      ", i+1, columna1[i]);
+            printf("%s       ", columna2[i]);
+            printf("%s\n", columna3[i]);
+        }
+    }
+    printf("  __|_________________________\n");
+    printf("     <18   19-35    >35\n\n");
+    printf("Grafico para una estadistica de:\n* %d personas con edad menor a 18,\n* %d personas con edades entre 19 y 35,\n* %d personas con edades mayores a 35.\n", w,k,j);
 }
+
 
 

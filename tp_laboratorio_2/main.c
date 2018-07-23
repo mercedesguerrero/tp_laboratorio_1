@@ -34,12 +34,11 @@ int main()
                 presionarContinuar();
                 break;
             case 3:
-                ordenarListadoDePersonas(listaDePersonas, TAMPERSONA);
                 mostrarListadoDePersonas(listaDePersonas, TAMPERSONA);
                 presionarContinuar();
                 break;
             case 4:
-
+                graficoPersonas(listaDePersonas, TAMPERSONA);
                 presionarContinuar();
                 break;
             case 5:
